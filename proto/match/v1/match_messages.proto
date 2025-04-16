@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package match.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/match/v1;matchv1";
+
+message ListenMatchesRequest {}
+
+message ListenMatchesResponse {
+	int64 from_user_id = 1;
+	int64 to_user_id = 2;
+}

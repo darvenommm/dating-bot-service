@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package action.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/action/v1;actionv1";
+
+enum Action {
+	ACTION_UNSPECIFIED = 0;
+	ACTION_LIKE = 1;
+	ACTION_DISLIKE = 2;
+}
+
+message AddActionRequest {
+	int64 from_user_id = 1;
+	int64 to_user_id = 2;
+	Action action = 3;
+}
+
+message AddActionResponse {}

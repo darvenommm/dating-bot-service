@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package match.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/match/v1;matchv1";
+
+import "match/v1/match_messages.proto";
+
+service MatchService {
+	rpc ListenMatches(ListenMatchesRequest) returns (stream ListenMatchesResponse);
+}

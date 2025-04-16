@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package filter.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/filter/v1;filterv1";
+
+import "filter/v1/filter_messages.proto";
+
+service FilterService {
+	rpc SetFilter(SetFilterRequest) returns (SetFilterResponse);
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package profile.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/profile/v1;profilev1";
+
+import "common/v1/gender.proto";
+import "google/protobuf/wrappers.proto";
+
+message Profile {
+  string                      full_name   = 1;
+  common.v1.Gender gender      = 2;
+  uint32                      age         = 3;
+  google.protobuf.StringValue description = 4;
+  google.protobuf.BytesValue  photo       = 5;
+}
+
+message SetProfileRequest {
+	int64 user_id = 1;
+	string given_name = 2;
+	string family_name = 3;
+	common.v1.Gender gender = 4;
+	uint32 age = 5;
+	optional string description = 6;
+	optional bytes photo = 7;
+}
+
+message SetProfileResponse {}
+
+message GetProfileRequest {
+	int64 user_id = 1;
+}
+
+message GetProfileResponse {
+	Profile profile = 1;
+}
+
+message GetMyProfileRequest {
+	int64 user_id = 1;
+}
+
+message GetMyProfileResponse {
+	Profile profile = 1;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package profile.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/profile/v1;profilev1";
+
+import "profile/v1/profile_messages.proto";
+
+service ProfileService {
+	rpc SetProfile(SetProfileRequest) returns (SetProfileResponse);
+	rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+	rpc GetMyProfile(GetMyProfileRequest) returns (GetMyProfileResponse);
+}

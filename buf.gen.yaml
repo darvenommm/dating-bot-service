@@ -1,0 +1,14 @@
+version: v2
+
+plugins:
+  - remote: buf.build/protocolbuffers/go:v1.36.6
+    out: pkg/api
+    opt:
+      - paths=source_relative
+      - Mgoogle/type/latlng.proto=google.golang.org/genproto/googleapis/type/latlng
+
+  - remote: buf.build/grpc/go:v1.5.1
+    out: pkg/api
+    opt:
+      - require_unimplemented_servers=false
+      - paths=source_relative

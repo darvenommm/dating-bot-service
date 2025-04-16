@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package action.v1;
+
+option go_package = "github.com/darvenommm/dating-bot-service/pkg/api/action/v1;actionv1";
+
+import "action/v1/action_messages.proto";
+
+service ActionService {
+	rpc AddAction(AddActionRequest) returns (AddActionResponse);
+}
