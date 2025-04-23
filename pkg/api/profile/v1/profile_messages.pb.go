@@ -102,12 +102,11 @@ func (x *Profile) GetPhoto() *wrapperspb.BytesValue {
 type SetProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	GivenName     string                 `protobuf:"bytes,2,opt,name=given_name,json=givenName,proto3" json:"given_name,omitempty"`
-	FamilyName    string                 `protobuf:"bytes,3,opt,name=family_name,json=familyName,proto3" json:"family_name,omitempty"`
-	Gender        v1.Gender              `protobuf:"varint,4,opt,name=gender,proto3,enum=common.v1.Gender" json:"gender,omitempty"`
-	Age           uint32                 `protobuf:"varint,5,opt,name=age,proto3" json:"age,omitempty"`
-	Description   *string                `protobuf:"bytes,6,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	Photo         []byte                 `protobuf:"bytes,7,opt,name=photo,proto3,oneof" json:"photo,omitempty"`
+	FullName      string                 `protobuf:"bytes,2,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	Gender        v1.Gender              `protobuf:"varint,3,opt,name=gender,proto3,enum=common.v1.Gender" json:"gender,omitempty"`
+	Age           uint32                 `protobuf:"varint,4,opt,name=age,proto3" json:"age,omitempty"`
+	Description   *string                `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Photo         []byte                 `protobuf:"bytes,6,opt,name=photo,proto3,oneof" json:"photo,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -149,16 +148,9 @@ func (x *SetProfileRequest) GetUserId() int64 {
 	return 0
 }
 
-func (x *SetProfileRequest) GetGivenName() string {
+func (x *SetProfileRequest) GetFullName() string {
 	if x != nil {
-		return x.GivenName
-	}
-	return ""
-}
-
-func (x *SetProfileRequest) GetFamilyName() string {
-	if x != nil {
-		return x.FamilyName
+		return x.FullName
 	}
 	return ""
 }
@@ -315,27 +307,27 @@ func (x *GetProfileResponse) GetProfile() *Profile {
 	return nil
 }
 
-type GetMyProfileRequest struct {
+type GetRecommendationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetMyProfileRequest) Reset() {
-	*x = GetMyProfileRequest{}
+func (x *GetRecommendationRequest) Reset() {
+	*x = GetRecommendationRequest{}
 	mi := &file_profile_v1_profile_messages_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetMyProfileRequest) String() string {
+func (x *GetRecommendationRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetMyProfileRequest) ProtoMessage() {}
+func (*GetRecommendationRequest) ProtoMessage() {}
 
-func (x *GetMyProfileRequest) ProtoReflect() protoreflect.Message {
+func (x *GetRecommendationRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_profile_v1_profile_messages_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -347,39 +339,39 @@ func (x *GetMyProfileRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetMyProfileRequest.ProtoReflect.Descriptor instead.
-func (*GetMyProfileRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetRecommendationRequest.ProtoReflect.Descriptor instead.
+func (*GetRecommendationRequest) Descriptor() ([]byte, []int) {
 	return file_profile_v1_profile_messages_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetMyProfileRequest) GetUserId() int64 {
+func (x *GetRecommendationRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-type GetMyProfileResponse struct {
+type GetRecommendationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Profile       *Profile               `protobuf:"bytes,1,opt,name=profile,proto3" json:"profile,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetMyProfileResponse) Reset() {
-	*x = GetMyProfileResponse{}
+func (x *GetRecommendationResponse) Reset() {
+	*x = GetRecommendationResponse{}
 	mi := &file_profile_v1_profile_messages_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetMyProfileResponse) String() string {
+func (x *GetRecommendationResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetMyProfileResponse) ProtoMessage() {}
+func (*GetRecommendationResponse) ProtoMessage() {}
 
-func (x *GetMyProfileResponse) ProtoReflect() protoreflect.Message {
+func (x *GetRecommendationResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_profile_v1_profile_messages_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -391,12 +383,12 @@ func (x *GetMyProfileResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetMyProfileResponse.ProtoReflect.Descriptor instead.
-func (*GetMyProfileResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetRecommendationResponse.ProtoReflect.Descriptor instead.
+func (*GetRecommendationResponse) Descriptor() ([]byte, []int) {
 	return file_profile_v1_profile_messages_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetMyProfileResponse) GetProfile() *Profile {
+func (x *GetRecommendationResponse) GetProfile() *Profile {
 	if x != nil {
 		return x.Profile
 	}
@@ -414,27 +406,24 @@ const file_profile_v1_profile_messages_proto_rawDesc = "" +
 	"\x06gender\x18\x02 \x01(\x0e2\x11.common.v1.GenderR\x06gender\x12\x10\n" +
 	"\x03age\x18\x03 \x01(\rR\x03age\x12>\n" +
 	"\vdescription\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x121\n" +
-	"\x05photo\x18\x05 \x01(\v2\x1b.google.protobuf.BytesValueR\x05photo\"\x85\x02\n" +
+	"\x05photo\x18\x05 \x01(\v2\x1b.google.protobuf.BytesValueR\x05photo\"\xe2\x01\n" +
 	"\x11SetProfileRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
-	"\n" +
-	"given_name\x18\x02 \x01(\tR\tgivenName\x12\x1f\n" +
-	"\vfamily_name\x18\x03 \x01(\tR\n" +
-	"familyName\x12)\n" +
-	"\x06gender\x18\x04 \x01(\x0e2\x11.common.v1.GenderR\x06gender\x12\x10\n" +
-	"\x03age\x18\x05 \x01(\rR\x03age\x12%\n" +
-	"\vdescription\x18\x06 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x19\n" +
-	"\x05photo\x18\a \x01(\fH\x01R\x05photo\x88\x01\x01B\x0e\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
+	"\tfull_name\x18\x02 \x01(\tR\bfullName\x12)\n" +
+	"\x06gender\x18\x03 \x01(\x0e2\x11.common.v1.GenderR\x06gender\x12\x10\n" +
+	"\x03age\x18\x04 \x01(\rR\x03age\x12%\n" +
+	"\vdescription\x18\x05 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x19\n" +
+	"\x05photo\x18\x06 \x01(\fH\x01R\x05photo\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_photo\"\x14\n" +
 	"\x12SetProfileResponse\",\n" +
 	"\x11GetProfileRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"C\n" +
 	"\x12GetProfileResponse\x12-\n" +
-	"\aprofile\x18\x01 \x01(\v2\x13.profile.v1.ProfileR\aprofile\".\n" +
-	"\x13GetMyProfileRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"E\n" +
-	"\x14GetMyProfileResponse\x12-\n" +
+	"\aprofile\x18\x01 \x01(\v2\x13.profile.v1.ProfileR\aprofile\"3\n" +
+	"\x18GetRecommendationRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"J\n" +
+	"\x19GetRecommendationResponse\x12-\n" +
 	"\aprofile\x18\x01 \x01(\v2\x13.profile.v1.ProfileR\aprofileBGZEgithub.com/darvenommm/dating-bot-service/pkg/api/profile/v1;profilev1b\x06proto3"
 
 var (
@@ -451,16 +440,16 @@ func file_profile_v1_profile_messages_proto_rawDescGZIP() []byte {
 
 var file_profile_v1_profile_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_profile_v1_profile_messages_proto_goTypes = []any{
-	(*Profile)(nil),                // 0: profile.v1.Profile
-	(*SetProfileRequest)(nil),      // 1: profile.v1.SetProfileRequest
-	(*SetProfileResponse)(nil),     // 2: profile.v1.SetProfileResponse
-	(*GetProfileRequest)(nil),      // 3: profile.v1.GetProfileRequest
-	(*GetProfileResponse)(nil),     // 4: profile.v1.GetProfileResponse
-	(*GetMyProfileRequest)(nil),    // 5: profile.v1.GetMyProfileRequest
-	(*GetMyProfileResponse)(nil),   // 6: profile.v1.GetMyProfileResponse
-	(v1.Gender)(0),                 // 7: common.v1.Gender
-	(*wrapperspb.StringValue)(nil), // 8: google.protobuf.StringValue
-	(*wrapperspb.BytesValue)(nil),  // 9: google.protobuf.BytesValue
+	(*Profile)(nil),                   // 0: profile.v1.Profile
+	(*SetProfileRequest)(nil),         // 1: profile.v1.SetProfileRequest
+	(*SetProfileResponse)(nil),        // 2: profile.v1.SetProfileResponse
+	(*GetProfileRequest)(nil),         // 3: profile.v1.GetProfileRequest
+	(*GetProfileResponse)(nil),        // 4: profile.v1.GetProfileResponse
+	(*GetRecommendationRequest)(nil),  // 5: profile.v1.GetRecommendationRequest
+	(*GetRecommendationResponse)(nil), // 6: profile.v1.GetRecommendationResponse
+	(v1.Gender)(0),                    // 7: common.v1.Gender
+	(*wrapperspb.StringValue)(nil),    // 8: google.protobuf.StringValue
+	(*wrapperspb.BytesValue)(nil),     // 9: google.protobuf.BytesValue
 }
 var file_profile_v1_profile_messages_proto_depIdxs = []int32{
 	7, // 0: profile.v1.Profile.gender:type_name -> common.v1.Gender
@@ -468,7 +457,7 @@ var file_profile_v1_profile_messages_proto_depIdxs = []int32{
 	9, // 2: profile.v1.Profile.photo:type_name -> google.protobuf.BytesValue
 	7, // 3: profile.v1.SetProfileRequest.gender:type_name -> common.v1.Gender
 	0, // 4: profile.v1.GetProfileResponse.profile:type_name -> profile.v1.Profile
-	0, // 5: profile.v1.GetMyProfileResponse.profile:type_name -> profile.v1.Profile
+	0, // 5: profile.v1.GetRecommendationResponse.profile:type_name -> profile.v1.Profile
 	6, // [6:6] is the sub-list for method output_type
 	6, // [6:6] is the sub-list for method input_type
 	6, // [6:6] is the sub-list for extension type_name

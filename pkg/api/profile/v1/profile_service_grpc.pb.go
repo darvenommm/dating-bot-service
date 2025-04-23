@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProfileService_SetProfile_FullMethodName   = "/profile.v1.ProfileService/SetProfile"
-	ProfileService_GetProfile_FullMethodName   = "/profile.v1.ProfileService/GetProfile"
-	ProfileService_GetMyProfile_FullMethodName = "/profile.v1.ProfileService/GetMyProfile"
+	ProfileService_SetProfile_FullMethodName        = "/profile.v1.ProfileService/SetProfile"
+	ProfileService_GetProfile_FullMethodName        = "/profile.v1.ProfileService/GetProfile"
+	ProfileService_GetRecommendation_FullMethodName = "/profile.v1.ProfileService/GetRecommendation"
 )
 
 // ProfileServiceClient is the client API for ProfileService service.
@@ -30,7 +30,7 @@ const (
 type ProfileServiceClient interface {
 	SetProfile(ctx context.Context, in *SetProfileRequest, opts ...grpc.CallOption) (*SetProfileResponse, error)
 	GetProfile(ctx context.Context, in *GetProfileRequest, opts ...grpc.CallOption) (*GetProfileResponse, error)
-	GetMyProfile(ctx context.Context, in *GetMyProfileRequest, opts ...grpc.CallOption) (*GetMyProfileResponse, error)
+	GetRecommendation(ctx context.Context, in *GetRecommendationRequest, opts ...grpc.CallOption) (*GetRecommendationResponse, error)
 }
 
 type profileServiceClient struct {
@@ -61,10 +61,10 @@ func (c *profileServiceClient) GetProfile(ctx context.Context, in *GetProfileReq
 	return out, nil
 }
 
-func (c *profileServiceClient) GetMyProfile(ctx context.Context, in *GetMyProfileRequest, opts ...grpc.CallOption) (*GetMyProfileResponse, error) {
+func (c *profileServiceClient) GetRecommendation(ctx context.Context, in *GetRecommendationRequest, opts ...grpc.CallOption) (*GetRecommendationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMyProfileResponse)
-	err := c.cc.Invoke(ctx, ProfileService_GetMyProfile_FullMethodName, in, out, cOpts...)
+	out := new(GetRecommendationResponse)
+	err := c.cc.Invoke(ctx, ProfileService_GetRecommendation_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ func (c *profileServiceClient) GetMyProfile(ctx context.Context, in *GetMyProfil
 type ProfileServiceServer interface {
 	SetProfile(context.Context, *SetProfileRequest) (*SetProfileResponse, error)
 	GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error)
-	GetMyProfile(context.Context, *GetMyProfileRequest) (*GetMyProfileResponse, error)
+	GetRecommendation(context.Context, *GetRecommendationRequest) (*GetRecommendationResponse, error)
 }
 
 // UnimplementedProfileServiceServer should be embedded to have
@@ -93,8 +93,8 @@ func (UnimplementedProfileServiceServer) SetProfile(context.Context, *SetProfile
 func (UnimplementedProfileServiceServer) GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProfile not implemented")
 }
-func (UnimplementedProfileServiceServer) GetMyProfile(context.Context, *GetMyProfileRequest) (*GetMyProfileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMyProfile not implemented")
+func (UnimplementedProfileServiceServer) GetRecommendation(context.Context, *GetRecommendationRequest) (*GetRecommendationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRecommendation not implemented")
 }
 func (UnimplementedProfileServiceServer) testEmbeddedByValue() {}
 
@@ -152,20 +152,20 @@ func _ProfileService_GetProfile_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProfileService_GetMyProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMyProfileRequest)
+func _ProfileService_GetRecommendation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRecommendationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProfileServiceServer).GetMyProfile(ctx, in)
+		return srv.(ProfileServiceServer).GetRecommendation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProfileService_GetMyProfile_FullMethodName,
+		FullMethod: ProfileService_GetRecommendation_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProfileServiceServer).GetMyProfile(ctx, req.(*GetMyProfileRequest))
+		return srv.(ProfileServiceServer).GetRecommendation(ctx, req.(*GetRecommendationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -186,8 +186,8 @@ var ProfileService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProfileService_GetProfile_Handler,
 		},
 		{
-			MethodName: "GetMyProfile",
-			Handler:    _ProfileService_GetMyProfile_Handler,
+			MethodName: "GetRecommendation",
+			Handler:    _ProfileService_GetRecommendation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

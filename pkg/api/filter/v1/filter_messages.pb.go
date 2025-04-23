@@ -8,7 +8,7 @@ package filterv1
 
 import (
 	v1 "github.com/darvenommm/dating-bot-service/pkg/api/common/v1"
-	latlng "google.golang.org/genproto/googleapis/type/latlng"
+	_ "google.golang.org/genproto/googleapis/type/latlng"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -29,7 +29,6 @@ type SetFilterRequest struct {
 	Gender        v1.Gender              `protobuf:"varint,2,opt,name=gender,proto3,enum=common.v1.Gender" json:"gender,omitempty"`
 	MinAge        uint32                 `protobuf:"varint,3,opt,name=min_age,json=minAge,proto3" json:"min_age,omitempty"`
 	MaxAge        uint32                 `protobuf:"varint,4,opt,name=max_age,json=maxAge,proto3" json:"max_age,omitempty"`
-	Location      *latlng.LatLng         `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -92,13 +91,6 @@ func (x *SetFilterRequest) GetMaxAge() uint32 {
 	return 0
 }
 
-func (x *SetFilterRequest) GetLocation() *latlng.LatLng {
-	if x != nil {
-		return x.Location
-	}
-	return nil
-}
-
 type SetFilterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -139,13 +131,12 @@ var File_filter_v1_filter_messages_proto protoreflect.FileDescriptor
 
 const file_filter_v1_filter_messages_proto_rawDesc = "" +
 	"\n" +
-	"\x1ffilter/v1/filter_messages.proto\x12\tfilter.v1\x1a\x16common/v1/gender.proto\x1a\x18google/type/latlng.proto\"\xb9\x01\n" +
+	"\x1ffilter/v1/filter_messages.proto\x12\tfilter.v1\x1a\x16common/v1/gender.proto\x1a\x18google/type/latlng.proto\"\x88\x01\n" +
 	"\x10SetFilterRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12)\n" +
 	"\x06gender\x18\x02 \x01(\x0e2\x11.common.v1.GenderR\x06gender\x12\x17\n" +
 	"\amin_age\x18\x03 \x01(\rR\x06minAge\x12\x17\n" +
-	"\amax_age\x18\x04 \x01(\rR\x06maxAge\x12/\n" +
-	"\blocation\x18\x05 \x01(\v2\x13.google.type.LatLngR\blocation\"\x13\n" +
+	"\amax_age\x18\x04 \x01(\rR\x06maxAge\"\x13\n" +
 	"\x11SetFilterResponseBEZCgithub.com/darvenommm/dating-bot-service/pkg/api/filter/v1;filterv1b\x06proto3"
 
 var (
@@ -165,16 +156,14 @@ var file_filter_v1_filter_messages_proto_goTypes = []any{
 	(*SetFilterRequest)(nil),  // 0: filter.v1.SetFilterRequest
 	(*SetFilterResponse)(nil), // 1: filter.v1.SetFilterResponse
 	(v1.Gender)(0),            // 2: common.v1.Gender
-	(*latlng.LatLng)(nil),     // 3: google.type.LatLng
 }
 var file_filter_v1_filter_messages_proto_depIdxs = []int32{
 	2, // 0: filter.v1.SetFilterRequest.gender:type_name -> common.v1.Gender
-	3, // 1: filter.v1.SetFilterRequest.location:type_name -> google.type.LatLng
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_filter_v1_filter_messages_proto_init() }

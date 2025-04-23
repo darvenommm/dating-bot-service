@@ -25,29 +25,29 @@ var File_profile_v1_profile_service_proto protoreflect.FileDescriptor
 const file_profile_v1_profile_service_proto_rawDesc = "" +
 	"\n" +
 	" profile/v1/profile_service.proto\x12\n" +
-	"profile.v1\x1a!profile/v1/profile_messages.proto2\xfd\x01\n" +
+	"profile.v1\x1a!profile/v1/profile_messages.proto2\x8c\x02\n" +
 	"\x0eProfileService\x12K\n" +
 	"\n" +
 	"SetProfile\x12\x1d.profile.v1.SetProfileRequest\x1a\x1e.profile.v1.SetProfileResponse\x12K\n" +
 	"\n" +
-	"GetProfile\x12\x1d.profile.v1.GetProfileRequest\x1a\x1e.profile.v1.GetProfileResponse\x12Q\n" +
-	"\fGetMyProfile\x12\x1f.profile.v1.GetMyProfileRequest\x1a .profile.v1.GetMyProfileResponseBGZEgithub.com/darvenommm/dating-bot-service/pkg/api/profile/v1;profilev1b\x06proto3"
+	"GetProfile\x12\x1d.profile.v1.GetProfileRequest\x1a\x1e.profile.v1.GetProfileResponse\x12`\n" +
+	"\x11GetRecommendation\x12$.profile.v1.GetRecommendationRequest\x1a%.profile.v1.GetRecommendationResponseBGZEgithub.com/darvenommm/dating-bot-service/pkg/api/profile/v1;profilev1b\x06proto3"
 
 var file_profile_v1_profile_service_proto_goTypes = []any{
-	(*SetProfileRequest)(nil),    // 0: profile.v1.SetProfileRequest
-	(*GetProfileRequest)(nil),    // 1: profile.v1.GetProfileRequest
-	(*GetMyProfileRequest)(nil),  // 2: profile.v1.GetMyProfileRequest
-	(*SetProfileResponse)(nil),   // 3: profile.v1.SetProfileResponse
-	(*GetProfileResponse)(nil),   // 4: profile.v1.GetProfileResponse
-	(*GetMyProfileResponse)(nil), // 5: profile.v1.GetMyProfileResponse
+	(*SetProfileRequest)(nil),         // 0: profile.v1.SetProfileRequest
+	(*GetProfileRequest)(nil),         // 1: profile.v1.GetProfileRequest
+	(*GetRecommendationRequest)(nil),  // 2: profile.v1.GetRecommendationRequest
+	(*SetProfileResponse)(nil),        // 3: profile.v1.SetProfileResponse
+	(*GetProfileResponse)(nil),        // 4: profile.v1.GetProfileResponse
+	(*GetRecommendationResponse)(nil), // 5: profile.v1.GetRecommendationResponse
 }
 var file_profile_v1_profile_service_proto_depIdxs = []int32{
 	0, // 0: profile.v1.ProfileService.SetProfile:input_type -> profile.v1.SetProfileRequest
 	1, // 1: profile.v1.ProfileService.GetProfile:input_type -> profile.v1.GetProfileRequest
-	2, // 2: profile.v1.ProfileService.GetMyProfile:input_type -> profile.v1.GetMyProfileRequest
+	2, // 2: profile.v1.ProfileService.GetRecommendation:input_type -> profile.v1.GetRecommendationRequest
 	3, // 3: profile.v1.ProfileService.SetProfile:output_type -> profile.v1.SetProfileResponse
 	4, // 4: profile.v1.ProfileService.GetProfile:output_type -> profile.v1.GetProfileResponse
-	5, // 5: profile.v1.ProfileService.GetMyProfile:output_type -> profile.v1.GetMyProfileResponse
+	5, // 5: profile.v1.ProfileService.GetRecommendation:output_type -> profile.v1.GetRecommendationResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

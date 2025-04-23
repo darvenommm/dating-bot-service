@@ -9,5 +9,5 @@ import "profile/v1/profile_messages.proto";
 service ProfileService {
 	rpc SetProfile(SetProfileRequest) returns (SetProfileResponse);
 	rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
-	rpc GetMyProfile(GetMyProfileRequest) returns (GetMyProfileResponse);
+	rpc GetRecommendation(GetRecommendationRequest) returns (GetRecommendationResponse);
 }

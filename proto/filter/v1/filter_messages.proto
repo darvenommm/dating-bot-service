@@ -12,7 +12,6 @@ message SetFilterRequest {
 	common.v1.Gender gender = 2;
 	uint32 min_age = 3;
 	uint32 max_age = 4;
-	google.type.LatLng location = 5;
 }
 
 message SetFilterResponse {}

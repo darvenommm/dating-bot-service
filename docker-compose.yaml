@@ -1,0 +1,63 @@
+services:
+  database:
+    container_name: dating-postgres
+    image: postgres:17.4-alpine3.21
+    restart: always
+    shm_size: 1024mb
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    healthcheck:
+      test: pg_isready -d ${DB_NAME} -U ${DB_USERNAME} -h database
+      interval: 2s
+      timeout: 3s
+      retries: 120
+    ports:
+      - ${DB_PORT}:5432
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: dating-redis
+    command: ["redis-server", "--requirepass", "${CACHE_PASSWORD}"]
+    ports:
+      - ${CACHE_PORT}:6379
+    restart: always
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.9.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "${ZOOKEEPER_PORT}:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.9.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "${KAFKA_PORT}:9092"
+    environment:
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9093,EXTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9093,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    depends_on:
+      - kafka
+    ports:
+      - "${KAFKA_UI_PORT}:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      # UI внутри сети — тянем INTERNAL
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9093
+      KAFKA_UI_AUTH_MODE: none
