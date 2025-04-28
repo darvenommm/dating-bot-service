@@ -78,6 +78,7 @@ func (s *ProfileServer) GetProfile(
 
 	return &profilev1.GetProfileResponse{
 		Profile: &profilev1.Profile{
+			UserId:      int64(p.UserID),
 			FullName:    p.FullName,
 			Gender:      commonv1.Gender(p.Gender),
 			Age:         uint32(p.Age),
@@ -144,6 +145,7 @@ func (s *ProfileServer) GetRecommendation(
 			photo = wrapperspb.Bytes(p.Photo)
 		}
 		prof := profilev1.Profile{
+			UserId:      int64(p.UserID),
 			FullName:    p.FullName,
 			Gender:      commonv1.Gender(p.Gender),
 			Age:         uint32(p.Age),

@@ -25,11 +25,12 @@ const (
 
 type Profile struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
-	FullName      string                  `protobuf:"bytes,1,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
-	Gender        v1.Gender               `protobuf:"varint,2,opt,name=gender,proto3,enum=common.v1.Gender" json:"gender,omitempty"`
-	Age           uint32                  `protobuf:"varint,3,opt,name=age,proto3" json:"age,omitempty"`
-	Description   *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	Photo         *wrapperspb.BytesValue  `protobuf:"bytes,5,opt,name=photo,proto3" json:"photo,omitempty"`
+	UserId        int64                   `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	FullName      string                  `protobuf:"bytes,2,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	Gender        v1.Gender               `protobuf:"varint,3,opt,name=gender,proto3,enum=common.v1.Gender" json:"gender,omitempty"`
+	Age           uint32                  `protobuf:"varint,4,opt,name=age,proto3" json:"age,omitempty"`
+	Description   *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	Photo         *wrapperspb.BytesValue  `protobuf:"bytes,6,opt,name=photo,proto3" json:"photo,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,6 +63,13 @@ func (x *Profile) ProtoReflect() protoreflect.Message {
 // Deprecated: Use Profile.ProtoReflect.Descriptor instead.
 func (*Profile) Descriptor() ([]byte, []int) {
 	return file_profile_v1_profile_messages_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Profile) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 func (x *Profile) GetFullName() string {
@@ -400,13 +408,14 @@ var File_profile_v1_profile_messages_proto protoreflect.FileDescriptor
 const file_profile_v1_profile_messages_proto_rawDesc = "" +
 	"\n" +
 	"!profile/v1/profile_messages.proto\x12\n" +
-	"profile.v1\x1a\x16common/v1/gender.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\xd6\x01\n" +
-	"\aProfile\x12\x1b\n" +
-	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12)\n" +
-	"\x06gender\x18\x02 \x01(\x0e2\x11.common.v1.GenderR\x06gender\x12\x10\n" +
-	"\x03age\x18\x03 \x01(\rR\x03age\x12>\n" +
-	"\vdescription\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x121\n" +
-	"\x05photo\x18\x05 \x01(\v2\x1b.google.protobuf.BytesValueR\x05photo\"\xe2\x01\n" +
+	"profile.v1\x1a\x16common/v1/gender.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\xef\x01\n" +
+	"\aProfile\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
+	"\tfull_name\x18\x02 \x01(\tR\bfullName\x12)\n" +
+	"\x06gender\x18\x03 \x01(\x0e2\x11.common.v1.GenderR\x06gender\x12\x10\n" +
+	"\x03age\x18\x04 \x01(\rR\x03age\x12>\n" +
+	"\vdescription\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x121\n" +
+	"\x05photo\x18\x06 \x01(\v2\x1b.google.protobuf.BytesValueR\x05photo\"\xe2\x01\n" +
 	"\x11SetProfileRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tfull_name\x18\x02 \x01(\tR\bfullName\x12)\n" +

@@ -38,6 +38,7 @@ func StartListeningAction(db *orm.ORM) error {
 				}
 
 				err := db.DB().Transaction(func(tx *gorm.DB) error {
+					log.Println(request.GetFromUserId(), request.GetToUserId())
 					action := UserAction{
 						FromUserID: int(request.GetFromUserId()),
 						ToUserID:   int(request.GetToUserId()),

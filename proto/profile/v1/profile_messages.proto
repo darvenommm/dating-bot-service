@@ -8,11 +8,12 @@ import "common/v1/gender.proto";
 import "google/protobuf/wrappers.proto";
 
 message Profile {
-  string                      full_name   = 1;
-  common.v1.Gender 						gender      = 2;
-  uint32                      age         = 3;
-  google.protobuf.StringValue description = 4;
-  google.protobuf.BytesValue  photo       = 5;
+	int64 											user_id     = 1;
+  string                      full_name   = 2;
+  common.v1.Gender 						gender      = 3;
+  uint32                      age         = 4;
+  google.protobuf.StringValue description = 5;
+  google.protobuf.BytesValue  photo       = 6;
 }
 
 message SetProfileRequest {
